@@ -104,6 +104,9 @@ export function NftClaim() {
                           configs={{
                             contractId: PAPER_NFT_CONTRACT, // from Paper dashboard
                             walletAddress: address,
+                            contractArgs: {
+                              tokenId: 0,
+                            },
                             email: email,
                           }}
                           options={{
