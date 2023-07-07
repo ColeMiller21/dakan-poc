@@ -71,7 +71,7 @@ export function NftClaim() {
             </p>
             <p className="font-extrabold">
               {ownedNFTs !== undefined && (
-                <span>Owned Count: {ownedNFTs!.length}</span>
+                <span>Owned Count: {ownedNFTs[0].quantityOwned}</span>
               )}
             </p>
           </>

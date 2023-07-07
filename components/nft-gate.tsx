@@ -13,7 +13,10 @@ function withNFTGate(WrappedComponent: any, requiredNFTs: number) {
       address
     );
 
-    if (ownedNFTsLoading || ownedNFTs!.length < requiredNFTs) {
+    if (
+      ownedNFTsLoading ||
+      Number(ownedNFTs![0].quantityOwned) < requiredNFTs
+    ) {
       return (
         <div className="relative rounded-lg border bg-card text-card-foreground shadow-sm h-[150px] aspect-square flex justify-center items-center">
           <div className="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-transparent z-10 flex-col w-full">
