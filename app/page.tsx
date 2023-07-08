@@ -3,8 +3,6 @@ import WrappedTier1 from "@/components/tiers/tier-1";
 import WrappedTier2 from "@/components/tiers/tier-2";
 import WrappedTier3 from "@/components/tiers/tier-3";
 
-const tiers = [1, 2, 3, 4, 5];
-
 export default function Home() {
   return (
     <section className="container grid items-center justify-center gap-6 pb-8 pt-6 md:py-10">

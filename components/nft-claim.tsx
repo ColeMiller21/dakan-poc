@@ -37,7 +37,6 @@ export function NftClaim() {
     contract,
     address
   );
-  console.log({ ownedNFTs });
   const { data: nft, isLoading: nftLoading, error } = useNFT(contract, 0);
 
   // Handle payment success state
@@ -71,7 +70,9 @@ export function NftClaim() {
             </p>
             <p className="font-extrabold">
               {ownedNFTs !== undefined && (
-                <span>Owned Count: {ownedNFTs[0].quantityOwned}</span>
+                <span>
+                  Owned Count: {ownedNFTs[0] ? ownedNFTs[0].quantityOwned : 0}
+                </span>
               )}
             </p>
           </>

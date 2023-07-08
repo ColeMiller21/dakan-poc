@@ -12,9 +12,10 @@ function withNFTGate(WrappedComponent: any, requiredNFTs: number) {
       contract,
       address
     );
-
     if (
       ownedNFTsLoading ||
+      ownedNFTs === undefined ||
+      ownedNFTs.length === 0 ||
       Number(ownedNFTs![0].quantityOwned) < requiredNFTs
     ) {
       return (
