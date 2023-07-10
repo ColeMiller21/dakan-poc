@@ -1,17 +1,16 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 
 import { NFT_ADDRESS, PAPER_NFT_CONTRACT } from "@/lib/constants";
 import {
   ThirdwebNftMedia,
   useContract,
-  useNFTs,
   usePaperWalletUserEmail,
   useAddress,
   useOwnedNFTs,
   useNFT,
   ConnectWallet,
+  Web3Button
 } from "@thirdweb-dev/react";
 import { useTheme } from "next-themes";
 import { Skeleton } from "./ui/skeleton";
@@ -78,11 +77,18 @@ export function NftClaim() {
           </>
         )}
 
-        {address && email ? (
+        {address ? (
           <div className="flex gap-4">
             <Dialog>
               <DialogTrigger asChild>
-                <Button>Pay With Crypto</Button>
+                <Web3Button
+                  contractAddress={NFT_ADDRESS}
+                  action={async (contract) => {
+                    await contract.erc1155.claim(0, 1)
+                  }}
+                >
+                  Pay With Crypto
+                </Web3Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
