@@ -10,7 +10,7 @@ import {
   useOwnedNFTs,
   useNFT,
   ConnectWallet,
-  Web3Button
+  Web3Button,
 } from "@thirdweb-dev/react";
 import { useTheme } from "next-themes";
 import { Skeleton } from "./ui/skeleton";
@@ -79,24 +79,16 @@ export function NftClaim() {
 
         {address ? (
           <div className="flex gap-4">
-            <Dialog>
-              <DialogTrigger asChild>
-                <Web3Button
-                  contractAddress={NFT_ADDRESS}
-                  action={async (contract) => {
-                    await contract.erc1155.claim(0, 1)
-                  }}
-                >
-                  Pay With Crypto
-                </Web3Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Pay With Crypto</DialogTitle>
-                  <DialogDescription>H</DialogDescription>
-                </DialogHeader>
-              </DialogContent>
-            </Dialog>
+            <Web3Button
+              contractAddress={NFT_ADDRESS}
+              action={async (contract) => {
+                await contract.erc1155.claim(0, 1);
+              }}
+              className="custom-btn"
+            >
+              Pay With Crypto
+            </Web3Button>
+
             <Dialog>
               <DialogTrigger asChild>
                 <Button>Pay With Card</Button>
@@ -106,7 +98,7 @@ export function NftClaim() {
                   <DialogTitle>Pay With Card</DialogTitle>
                   <DialogDescription>
                     {!paymentSuccessful ? (
-                      <div className="my-8">
+                      <div className="my-8 flex flex-col">
                         <CheckoutWithCard
                           configs={{
                             contractId: PAPER_NFT_CONTRACT, // from Paper dashboard
@@ -122,6 +114,18 @@ export function NftClaim() {
                           onError={(error) => console.error({ error })}
                           onPaymentSuccess={handlePaymentSuccess}
                         />
+                        <div className="flex flex-col items-center justify-center">
+                          <h2 className="font-extrabold">Test Card Creds</h2>
+                          <p>
+                            <span className="font-bold">Card: </span> 4242 4242
+                            4242 4242
+                          </p>
+                          <p>
+                            <span className="font-bold">Exp: </span> 4/24 -{" "}
+                            <span className="font-bold">CVC: </span> 123 -{" "}
+                            <span className="font-bold">Zip: </span> 12345
+                          </p>
+                        </div>
                       </div>
                     ) : (
                       <div>
