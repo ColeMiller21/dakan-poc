@@ -26,6 +26,7 @@ export function SiteHeader() {
               theme={theme as "light" | "dark"}
               btnTitle="Login"
               modalTitle="Login to Dakan"
+              className={!address ? `custom-btn-main` : ""}
             />
             <Link
               href={siteConfig.links.twitter}

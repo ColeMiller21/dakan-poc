@@ -84,7 +84,7 @@ export function NftClaim() {
               action={async (contract) => {
                 await contract.erc1155.claim(0, 1);
               }}
-              className="custom-btn"
+              className="custom-btn-main"
             >
               Pay With Crypto
             </Web3Button>
@@ -142,6 +142,7 @@ export function NftClaim() {
             theme={theme as "light" | "dark"}
             btnTitle="Login"
             modalTitle="Login to Dakan"
+            className="custom-btn-main"
           />
         )}
       </div>
