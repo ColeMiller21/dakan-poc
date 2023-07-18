@@ -12,9 +12,8 @@ import { useAddress, ConnectWallet, useDisconnect } from "@thirdweb-dev/react";
 import { UserDropDown } from "@/components/user-dropdown";
 
 export function SiteHeader() {
-  const { setTheme, theme } = useTheme();
+  const { theme } = useTheme();
   const address = useAddress();
-  const disconnect = useDisconnect();
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">

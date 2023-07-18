@@ -1,3 +1,4 @@
+import { LoginState } from "@/components/login-state";
 import { NftClaim } from "@/components/nft-claim";
 import WrappedTier1 from "@/components/tiers/tier-1";
 import WrappedTier2 from "@/components/tiers/tier-2";
@@ -12,6 +13,7 @@ export default function Home() {
         </h1>
       </div>
       <div className="flex flex-col items-center justify-center gap-6 max-w-[980px]">
+        <LoginState />
         <NftClaim />
       </div>
       <div className="flex gap-4 max-w-[980px] justify-center">

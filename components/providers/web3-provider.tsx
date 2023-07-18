@@ -32,6 +32,11 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
         }),
         metamaskWallet(),
       ]}
+      authConfig={{
+        // Set this to your domain to prevent signature malleability attacks.
+        domain: process.env.NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN as string,
+        authUrl: "/api/auth",
+      }}
     >
       {children}
     </ThirdwebProvider>

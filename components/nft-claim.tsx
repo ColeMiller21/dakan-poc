@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { NFT_ADDRESS, PAPER_NFT_CONTRACT } from "@/lib/constants";
 import {
@@ -24,10 +24,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
-const NFT_SIZE = 225;
+import UserContext from "@/context/user-context";
 
 export function NftClaim() {
+  const { user, loading, isLoggedIn } = useContext(UserContext);
+
   const address = useAddress();
   const { theme } = useTheme();
   const { data: email } = usePaperWalletUserEmail();
@@ -36,6 +37,7 @@ export function NftClaim() {
     contract,
     address
   );
+
   const { data: nft, isLoading: nftLoading, error } = useNFT(contract, 0);
 
   // Handle payment success state
@@ -45,7 +47,7 @@ export function NftClaim() {
   };
 
   return (
-    <div className="w-full flex flex-col lg:flex-row my-14 gap-[2rem]">
+    <div className="w-full flex flex-col lg:flex-row justify-center my-14 gap-[2rem]">
       {nftLoading ? (
         <Skeleton className={`w-[225px] h-[225px]`} />
       ) : (
@@ -68,7 +70,7 @@ export function NftClaim() {
               {nft?.metadata.description}
             </p>
             <p className="font-extrabold">
-              {ownedNFTs !== undefined && (
+              {ownedNFTs !== undefined && isLoggedIn && (
                 <span>
                   Owned Count: {ownedNFTs[0] ? ownedNFTs[0].quantityOwned : 0}
                 </span>
@@ -77,7 +79,7 @@ export function NftClaim() {
           </>
         )}
 
-        {address ? (
+        {address && isLoggedIn ? (
           <div className="flex gap-4">
             <Web3Button
               contractAddress={NFT_ADDRESS}
