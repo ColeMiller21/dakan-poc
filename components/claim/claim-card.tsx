@@ -1,10 +1,16 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Claim } from "./claim";
 import { Phygital } from "@/types/phygital";
 import { supabase } from "@/lib/supabase/supabase";
+import { useTheme } from "next-themes";
+import { useAddress, ConnectWallet } from "@thirdweb-dev/react";
+import UserContext from "@/context/user-context";
 
 export function ClaimCard({ id }: { id: number }) {
+  const { user, loading, isLoggedIn } = useContext(UserContext);
+  const { theme } = useTheme();
+  const address = useAddress();
   const [phygital, setPhygital] = useState<Phygital | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -23,6 +29,21 @@ export function ClaimCard({ id }: { id: number }) {
     };
     getPhygitalById();
   }, []);
+
+  if (!isLoggedIn && !loading) {
+    return (
+      <ConnectWallet
+        theme={theme as "light" | "dark"}
+        btnTitle="Login"
+        modalTitle="Login to Dakan"
+        className={!address ? `custom-btn-main` : ""}
+      />
+    );
+  }
+
+  if (loading) {
+    return <div>Loading User....</div>;
+  }
   return (
     <div className="flex flex-col gap-4 justify-center items-center">
       {isLoading ? (

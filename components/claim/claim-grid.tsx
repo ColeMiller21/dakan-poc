@@ -1,11 +1,17 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { supabase } from "@/lib/supabase/supabase";
 import { Phygital } from "@/types/phygital";
 import { Button } from "../ui/button";
+import UserContext from "@/context/user-context";
+import { useTheme } from "next-themes";
+import { useAddress, ConnectWallet } from "@thirdweb-dev/react";
 import Link from "next/link";
 
 export function ClaimGrid() {
+  const { user, loading, isLoggedIn } = useContext(UserContext);
+  const { theme } = useTheme();
+  const address = useAddress();
   const [phygitals, setPhygitals] = useState<Phygital[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -20,6 +26,21 @@ export function ClaimGrid() {
     };
     getPhygitals();
   }, []);
+
+  if (!isLoggedIn && !loading) {
+    return (
+      <ConnectWallet
+        theme={theme as "light" | "dark"}
+        btnTitle="Login"
+        modalTitle="Login to Dakan"
+        className={!address ? `custom-btn-main` : ""}
+      />
+    );
+  }
+
+  if (loading) {
+    return <div>Loading User....</div>;
+  }
 
   return (
     <div className="mx-auto max-w-screen-xl px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 place-items-center">

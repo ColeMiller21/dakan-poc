@@ -8,7 +8,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { useAddress, ConnectWallet, useDisconnect } from "@thirdweb-dev/react";
+import { useAddress, ConnectWallet } from "@thirdweb-dev/react";
 import { UserDropDown } from "@/components/user-dropdown";
 
 export function SiteHeader() {
