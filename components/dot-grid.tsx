@@ -1,8 +1,8 @@
 "use client";
 import anime from "animejs";
 
-const GRID_WIDTH = 25;
-const GRID_HEIGHT = 20;
+const GRID_WIDTH = 35;
+const GRID_HEIGHT = 30;
 
 export function DotGrid() {
   const handleDotClick = (e: any) => {
@@ -35,12 +35,12 @@ export function DotGrid() {
       dots.push(
         <div
           onClick={handleDotClick}
-          className="group cursor-crosshair rounded-full p-2 transition-colors hover:bg-slate-600"
+          className="group cursor-crosshair rounded-full p-2 transition-colors "
           data-index={index}
           key={`${i}-${j}`}
         >
           <div
-            className="dot-point h-2 w-2 rounded-full bg-gradient-to-b from-slate-700 to-slate-400 opacity-50 group-hover:from-indigo-600 group-hover:to-white"
+            className="dot-point h-2 w-2 rounded-full bg-gradient-to-b from-slate-700 to-[#66ff91] opacity-50 group-hover:from-[#66ff91] group-hover:to-white"
             data-index={index}
           />
         </div>
@@ -52,7 +52,7 @@ export function DotGrid() {
   return (
     <div
       style={{ gridTemplateColumns: `repeat(${GRID_WIDTH}, 1fr)` }}
-      className="absolute right-0 top-[50%] z-0 grid max-w-[75%] -translate-y-[50%]"
+      className="absolute left-0 top-0 z-0 grid w-screen min-h-screen-minus-navbar"
     >
       {dots}
     </div>

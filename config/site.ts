@@ -8,6 +8,7 @@ export const siteConfig = {
       title: "Home",
       href: "/",
     },
+    { title: "Pass", href: "/pass" },
     { title: "Claim", href: "/claim" },
   ],
   links: {
