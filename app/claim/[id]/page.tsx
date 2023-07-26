@@ -24,12 +24,9 @@ export default async function Page({ params }: { params: { id: number } }) {
   );
 }
 
-export async function generateStaticParams() {
-  const { data, error } = await supabase
-    .from("claim_phygital") // Your table name
-    .select("*");
-  if (!data) return;
-  return data.map((d: Phygital) => ({
+export async function generateStaticParams(): Promise<{ id: string }[]> {
+  const { data, error } = await supabase.from("claim_phygital").select("*");
+  return data!.map((d: Phygital) => ({
     id: d.id.toString(),
   }));
 }
