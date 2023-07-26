@@ -3,4 +3,7 @@ export interface User {
   address?: string | null | undefined;
   email?: string | null | undefined;
   image?: string | null | undefined;
+  user: any;
+  session?: any;
+  data?: any;
 }

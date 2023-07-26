@@ -1,5 +1,6 @@
 import { ThirdwebAuth } from "@thirdweb-dev/auth/next";
 import { PrivateKeyWallet } from "@thirdweb-dev/auth/evm";
+import { supabase } from "@/lib/supabase/supabase";
 
 // Here we configure thirdweb auth with a domain and wallet
 export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
@@ -7,16 +8,29 @@ export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
   wallet: new PrivateKeyWallet(process.env.THIRDWEB_AUTH_PRIVATE_KEY || ""),
   callbacks: {
     onLogin: async (address: string) => {
-      console.log("onLogin: ", address);
-      // Create a new user entry if the user doesn't exist
-      // if (!await dbExample.userExists(user.address)) {
-      //   await dbExample.createUser({ address: user.address });
-      // }
+      const { data, error } = await supabase
+        .from("user")
+        .select("*")
+        .eq("address", address);
+      console.log(data);
 
-      // You can populate data from your database or other sources
-      //  const data = await dbExample.getUserData(user.address);
+      if (error) {
+        console.log(error);
+        throw error;
+      }
 
-      //  return data;
+      if (!data || data.length === 0) {
+        // Create a new user entry if the user doesn't exist
+        console.log("user doesnt exist");
+        const { error } = await supabase
+          .from("user")
+          .insert([{ address: address }]);
+
+        if (error) {
+          console.log(error);
+          throw error;
+        }
+      }
 
       let session = {
         address,
@@ -25,12 +39,15 @@ export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
       return session;
     },
     onUser: async (address: any) => {
-      console.log("onUser: ", address);
+      const { data, error } = await supabase.from("user").select(``);
+      if (error) {
+        console.log(error);
+        throw error;
+      }
 
-      // You can populate data from your database or other sources
-
-      console.log({ address });
-      return { address, user: "USER DATA", message: "from on user" };
+      const userData = data ? data[0] : {};
+      console.log({ userData });
+      return { address, user: userData, message: "from on user" };
     },
     onLogout: async (user: any) => {
       console.log("onLogout: ", user);
@@ -38,16 +55,33 @@ export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
     },
   },
   authOptions: {
-    validateNonce: async (nonce: string) => {
-      console.log({ nonce });
-      // Check in database or storage if nonce exists
-      // const nonceExists = await dbExample.nonceExists(nonce);
-      // if (nonceExists) {
-      //   throw new Error("Nonce has already been used!");
-      // }
-      // Otherwise save nonce in database or storage for later validation
-      // await dbExample.saveNonce(nonce);
-    },
+    // validateNonce: async (nonce: string) => {
+    //   console.log({ nonce });
+    //   // Check in database or storage if nonce exists
+    //   const { data, error } = await supabase
+    //     .from("session_nonce")
+    //     .select("*")
+    //     .eq("nonce", nonce);
+
+    //   if (error) {
+    //     console.log(error);
+    //     throw error;
+    //   }
+
+    //   if (data && data.length > 0) {
+    //     throw new Error("Nonce has already been used!");
+    //   }
+
+    //   // Otherwise save nonce in database or storage for later validation
+    //   const { error: insertError } = await supabase
+    //     .from("session_nonce")
+    //     .insert([{ nonce: nonce }]);
+
+    //   if (insertError) {
+    //     console.log(insertError);
+    //     throw insertError;
+    //   }
+    // },
     tokenDurationInSeconds: 60 * 60 * 24 * 7, // 1 week
     refreshIntervalInSeconds: 60 * 60, // 1 hour
   },

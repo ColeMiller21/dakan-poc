@@ -47,7 +47,7 @@ export function NftClaim() {
   };
 
   return (
-    <div className="w-full flex flex-col lg:flex-row justify-center my-14 gap-[2rem]">
+    <div className="w-full flex flex-col lg:flex-row justify-center my-14 gap-[2rem] z-10">
       {nftLoading ? (
         <Skeleton className={`w-[225px] h-[225px]`} />
       ) : (

@@ -1,4 +1,6 @@
 import { UserProfile } from "@/components/profile/user-profile";
+import { ImageUpload } from "@/components/profile/image-upload";
+import { DisplayImages } from "@/components/profile/display-images";
 
 export default function Profile() {
   return (
@@ -8,6 +10,8 @@ export default function Profile() {
           Profile
         </h1>
         <UserProfile />
+        <ImageUpload />
+        <DisplayImages />
       </div>
     </section>
   );

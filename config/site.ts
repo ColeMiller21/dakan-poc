@@ -8,6 +8,7 @@ export const siteConfig = {
       title: "Home",
       href: "/",
     },
+    { title: "Claim", href: "/claim" },
   ],
   links: {
     twitter: "https://twitter.com/dakan_io",

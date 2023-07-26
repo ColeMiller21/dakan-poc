@@ -16,11 +16,16 @@ export function LoginState() {
       <div>
         <p>User logged In: {`${isLoggedIn}`}</p>
         {isLoggedIn && (
-          <>
+          <div>
             <p>Logged in user: {user?.address}</p>
-            <p>Session context: {JSON.stringify(user, null, 2)}</p>
+            <p className="text-blue-500">
+              Session Data: {JSON.stringify(user?.session)}
+            </p>
+            <p className="text-red-500">
+              User Data: {JSON.stringify(user?.data)}
+            </p>
             <Button onClick={logUserInfo}>Log User</Button>
-          </>
+          </div>
         )}
       </div>
     </div>

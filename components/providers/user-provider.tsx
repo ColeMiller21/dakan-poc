@@ -12,30 +12,24 @@ interface UserProviderProps {
 const UserProvider = ({ children }: UserProviderProps) => {
   const address = useAddress();
   const { user: twUser } = useUser();
-  console.log(twUser);
   const [user, setUser] = useState<User | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log({ address, twUser, user });
     fetchUser();
   }, [twUser]);
 
   const fetchUser = async () => {
     try {
       const response = await fetch("/api/user");
-
       if (response.status === 200) {
         const data = await response.json();
-        console.log({ data });
         if (!data.user) {
-          console.log("is not logged in");
           setUser(null);
           setIsLoggedIn(false);
           return;
         }
-        console.log("is logged in");
         setIsLoggedIn(true);
         setUser(data.user);
       } else if (response.status === 401) {
