@@ -7,6 +7,7 @@ import UserContext from "@/context/user-context";
 import { useTheme } from "next-themes";
 import { useAddress, ConnectWallet } from "@thirdweb-dev/react";
 import Link from "next/link";
+import useCheckBalance from '@/hooks/useCheckBalance';
 
 export function ClaimGrid() {
   const { user, loading, isLoggedIn } = useContext(UserContext);
@@ -14,6 +15,7 @@ export function ClaimGrid() {
   const address = useAddress();
   const [phygitals, setPhygitals] = useState<Phygital[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { hasNFTs, loading: balanceCheckLoading } = useCheckBalance();
 
   useEffect(() => {
     const getPhygitals = async () => {
@@ -40,6 +42,21 @@ export function ClaimGrid() {
 
   if (loading) {
     return <div>Loading User....</div>;
+  }
+
+  if (isLoggedIn && !hasNFTs) {
+    return (
+      <div className="w-full flex flex-col gap-12 justify-center items-center mt-4">
+        <h2 className="font-extrabold text-2xl">
+          You have no NFTs to claim a phygital
+        </h2>
+        <Button asChild>
+          <Link href="/pass">
+            Go To Pass
+          </Link>
+        </Button>
+      </div>
+    );
   }
 
   return (

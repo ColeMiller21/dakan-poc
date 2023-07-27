@@ -7,7 +7,6 @@ import {
   useContract,
   usePaperWalletUserEmail,
   useAddress,
-  useOwnedNFTs,
   useNFT,
   ConnectWallet,
   Web3Button,
@@ -25,6 +24,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import UserContext from "@/context/user-context";
+import useCheckBalance from "@/hooks/useCheckBalance";
 
 export function NftClaim() {
   const { user, loading, isLoggedIn } = useContext(UserContext);
@@ -33,10 +33,7 @@ export function NftClaim() {
   const { theme } = useTheme();
   const { data: email } = usePaperWalletUserEmail();
   const { contract } = useContract(NFT_ADDRESS);
-  const { data: ownedNFTs, isLoading: ownedNFTsLoading } = useOwnedNFTs(
-    contract,
-    address
-  );
+  const { hasNFTs, nftsOwned, loading: balanceCheckLoading, error: balanceCheckError } = useCheckBalance();
 
   const { data: nft, isLoading: nftLoading, error } = useNFT(contract, 0);
 
@@ -70,9 +67,9 @@ export function NftClaim() {
               {nft?.metadata.description}
             </p>
             <p className="font-extrabold">
-              {ownedNFTs !== undefined && isLoggedIn && (
+              {hasNFTs && isLoggedIn && !balanceCheckLoading && (
                 <span>
-                  Owned Count: {ownedNFTs[0] ? ownedNFTs[0].quantityOwned : 0}
+                  Owned Count: {nftsOwned}
                 </span>
               )}
             </p>
@@ -81,16 +78,17 @@ export function NftClaim() {
 
         {address && isLoggedIn ? (
           <div className="flex gap-4">
-            <Web3Button
-              contractAddress={NFT_ADDRESS}
-              action={async (contract) => {
-                await contract.erc1155.claim(0, 1);
-              }}
-              className="custom-btn-main"
-            >
-              Pay With Crypto
-            </Web3Button>
-
+            {!email && (
+              <Web3Button
+                contractAddress={NFT_ADDRESS}
+                action={async (contract) => {
+                  await contract.erc1155.claim(0, 1);
+                }}
+                className="custom-btn-main"
+              >
+                Pay With Crypto
+              </Web3Button>
+            )}
             <Dialog>
               <DialogTrigger asChild>
                 <Button>Pay With Card</Button>

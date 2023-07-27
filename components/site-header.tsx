@@ -4,21 +4,31 @@ import Link from "next/link";
 
 import { useTheme } from "next-themes";
 import { siteConfig } from "@/config/site";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { MainNav } from "@/components/main-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { useAddress, ConnectWallet } from "@thirdweb-dev/react";
 import { UserDropDown } from "@/components/user-dropdown";
+import { useAddress, ConnectWallet } from "@thirdweb-dev/react";
+import useCheckBalance from '@/hooks/useCheckBalance';
 
 export function SiteHeader() {
   const { theme } = useTheme();
   const address = useAddress();
+  const { hasNFTs, loading: balanceCheckLoading } = useCheckBalance();
+
+  // Filter through siteConfig.mainNav and remove the "Claim" link if the user has no NFTs
+  const gatedMainNav = siteConfig.mainNav.filter((item) => {
+    if (item.title === "Claim" && (!hasNFTs || balanceCheckLoading)) {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-        <MainNav items={siteConfig.mainNav} />
+          <MainNav items={gatedMainNav} />
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
             <ConnectWallet
