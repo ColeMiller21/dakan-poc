@@ -3,7 +3,6 @@
 import { Goerli } from "@thirdweb-dev/chains";
 import {
   PAPER_CLIENT_ID,
-  FACTORY_ADDRESS,
   THIRD_WEB_API_KEY,
 } from "@/lib/constants";
 import {
@@ -23,12 +22,6 @@ export function Web3Provider({ children }: { children: React.ReactNode }) {
       supportedWallets={[
         paperWallet({
           clientId: PAPER_CLIENT_ID,
-        }),
-        smartWallet({
-          factoryAddress: FACTORY_ADDRESS,
-          thirdwebApiKey: THIRD_WEB_API_KEY,
-          gasless: true,
-          personalWallets: [localWallet({ persist: true })],
         }),
         metamaskWallet(),
       ]}
