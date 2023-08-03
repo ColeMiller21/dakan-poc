@@ -39,14 +39,16 @@ export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
       return session;
     },
     onUser: async (address: any) => {
-      const { data, error } = await supabase.from("user").select(``);
+      const { data, error } = await supabase
+        .from("user_claim_phygital")
+        .select("*")
+        .eq("address", address.address);
       if (error) {
         console.log(error);
         throw error;
       }
 
       const userData = data ? data[0] : {};
-      console.log({ userData });
       return { address, user: userData, message: "from on user" };
     },
     onLogout: async (user: any) => {

@@ -5,6 +5,9 @@ import {
   Twitter,
   Wallet,
   Copy,
+  Share,
+  Menu,
+  X,
   type Icon as LucideIcon,
 } from "lucide-react";
 
@@ -12,10 +15,13 @@ export type Icon = LucideIcon;
 
 export const Icons = {
   copy: Copy,
+  share: Share,
   sun: SunMedium,
   wallet: Wallet,
   moon: Moon,
   twitter: Twitter,
+  menu: Menu,
+  close: X,
   google: (props: LucideProps) => (
     <svg role="img" viewBox="0 0 24 24" {...props}>
       <path

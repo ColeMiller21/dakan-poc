@@ -27,14 +27,16 @@ export function Claim({ id, setPhygital }: ClaimCardProps) {
   };
 
   return (
-    <div>
+    <div className="w-full">
       {isLoading ? (
-        <Button disabled>
+        <Button disabled className="w-full">
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
           Claiming
         </Button>
       ) : (
-        <Button onClick={handleClaim}>Claim</Button>
+        <Button onClick={handleClaim} className="w-full">
+          Claim
+        </Button>
       )}
     </div>
   );

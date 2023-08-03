@@ -42,7 +42,7 @@ export function UserDropDown() {
               {isLoading ? (
                 <Skeleton className="w-[70px] h-[16px] rounded-full" />
               ) : (
-                `${tokenBalance?.displayValue} ETH`
+                `${Number(tokenBalance?.displayValue).toFixed(2)} ETH`
               )}
             </p>
             <p className="text-xs leading-none text-muted-foreground">
@@ -56,7 +56,7 @@ export function UserDropDown() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <Link href="/profile">
+          <Link href={`/profile/${address}`}>
             <DropdownMenuItem>Profile</DropdownMenuItem>
           </Link>
           <DropdownMenuItem>Billing</DropdownMenuItem>

@@ -31,7 +31,7 @@ const UserProvider = ({ children }: UserProviderProps) => {
           return;
         }
         setIsLoggedIn(true);
-        setUser(data.user);
+        setUser(data.user.data.user);
       } else if (response.status === 401) {
         setUser(null);
         setIsLoggedIn(false);

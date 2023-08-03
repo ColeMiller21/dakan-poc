@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabase/supabase";
 import { Phygital } from "@/types/phygital";
 import { ClaimCard } from "@/components/claim/claim-card";
+import { ClaimPage } from "@/components/claim/claim-page";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
@@ -19,7 +20,8 @@ export default async function Page({ params }: { params: { id: number } }) {
         </Link>
         Claim Page for {params.id}
       </h1>
-      <ClaimCard id={params.id as number} />
+      {/* <ClaimCard id={params.id as number} /> */}
+      <ClaimPage id={params.id as number} />
     </div>
   );
 }
@@ -27,6 +29,6 @@ export default async function Page({ params }: { params: { id: number } }) {
 export async function generateStaticParams(): Promise<{ id: string }[]> {
   const { data, error } = await supabase.from("claim_phygital").select("*");
   return data!.map((d: Phygital) => ({
-    id: d.id.toString(),
+    id: d.cert_id.toString(),
   }));
 }

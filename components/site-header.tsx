@@ -10,7 +10,7 @@ import { MainNav } from "@/components/main-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { UserDropDown } from "@/components/user-dropdown";
 import { useAddress, ConnectWallet } from "@thirdweb-dev/react";
-import useCheckBalance from '@/hooks/useCheckBalance';
+import useCheckBalance from "@/hooks/useCheckBalance";
 
 export function SiteHeader() {
   const { theme } = useTheme();
@@ -27,33 +27,36 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
-      <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-          <MainNav items={gatedMainNav} />
+      <div className="container px-4 lg:px-8 flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+        <MainNav items={gatedMainNav} />
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
-            <ConnectWallet
-              theme={theme as "light" | "dark"}
-              btnTitle="Login"
-              modalTitle="Login to Dakan"
-              className={!address ? `custom-btn-main` : ""}
-            />
+            <div className="hidden lg:block">
+              <ConnectWallet
+                theme={theme as "light" | "dark"}
+                btnTitle="Login"
+                modalTitle="Login to Dakan"
+                className={`${!address ? `custom-btn-main` : ""}`}
+              />
+            </div>
             <Link
               href={siteConfig.links.twitter}
               target="_blank"
               rel="noreferrer"
+              className="hidden"
             >
               <div
-                className={buttonVariants({
+                className={`${buttonVariants({
                   size: "sm",
                   variant: "ghost",
-                })}
+                })}`}
               >
                 <Icons.twitter className="h-5 w-5 fill-current" />
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
             <ThemeToggle />
-            <div className="flex justify-center items-center ml-4">
+            <div className="hidden lg:flex justify-center items-center ml-4">
               <UserDropDown />
             </div>
           </nav>

@@ -52,7 +52,7 @@ export function DotGrid() {
   return (
     <div
       style={{ gridTemplateColumns: `repeat(${GRID_WIDTH}, 1fr)` }}
-      className="absolute left-0 top-0 z-0 grid w-screen min-h-screen-minus-navbar"
+      className="absolute inset-0 z-0 grid min-h-screen-minus-navbar"
     >
       {dots}
     </div>

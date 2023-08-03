@@ -1,6 +1,11 @@
 export interface Phygital {
-  id: number;
-  image_url: string;
-  metadata: string;
   claimedBy: string | null;
+  image_url: string;
+  name: string;
+  brand: string;
+  authentication_company: string;
+  quality: number;
+  cert_id: number;
+  category: string;
+  type: string;
 }

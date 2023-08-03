@@ -50,7 +50,7 @@ export function ClaimCard({ id }: { id: number }) {
         <h2>Phygital Loading...</h2>
       ) : (
         <>
-          <p className="font-bold">{phygital?.metadata}</p>
+          <p className="font-bold">{phygital?.name}</p>
           <video width="320" height="240" controls loop autoPlay muted>
             <source src={phygital?.image_url} type="video/mp4" />
             Your browser does not support the video tag.

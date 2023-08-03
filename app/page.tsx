@@ -17,7 +17,7 @@ export default function Home() {
           </div>
         </Reveal>
       </div>
-      <DotGrid />
+      {/* <DotGrid /> */}
     </section>
   );
 }
