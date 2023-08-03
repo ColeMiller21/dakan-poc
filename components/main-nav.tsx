@@ -83,6 +83,7 @@ export function MainNav({ items }: MainNavProps) {
                     <Link
                       key={index}
                       href={item.href}
+                      onClick={toggleMobileMenu}
                       className={cn(
                         "flex items-center text-[2rem] font-bold text-muted-foreground",
                         item.disabled && "cursor-not-allowed opacity-80"

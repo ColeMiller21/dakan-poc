@@ -14,7 +14,7 @@ export default function Page() {
       <div className="flex flex-col md:flex-row items-start justify-center gap-6">
         <NftClaim />
       </div>
-      <div className="flex gap-4 max-w-[980px] justify-center">
+      <div className="flex flex-col items-center lg:flex-row gap-4 max-w-[980px] justify-center">
         <WrappedTier1 />
         <WrappedTier2 />
         <WrappedTier3 />
