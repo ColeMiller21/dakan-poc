@@ -2,9 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "DinoPro";
+  src: url("/fonts/DINPro.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DinoPro";
+  src: url("/fonts/DINPro-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 240 4% 95%;
     --foreground: 222.2 84% 4.9%;
 
     --muted: 210 40% 96.1%;
@@ -22,11 +36,14 @@
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
 
+    --inverse-primary: 210 40% 98%;
+    --inverse-primary-foreground: 222.2 47.4% 11.2%;
+
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 210, 40%, 90%;
+    --accent-foreground: 222.2, 47.4%, 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -57,6 +74,9 @@
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
+    --inverse-primary: 222.2 47.4% 11.2%;
+    --inverse-primary-foreground: 210 40% 98%;
+
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
 
@@ -83,4 +103,22 @@
 
 .custom-btn-main {
   @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-4 !important;
+}
+
+.inverse-fill {
+  fill: @apply text-inversePrimary;
+}
+
+.bg-image {
+  background-image: url("/assets/dots_t.png");
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center center;
+  z-index: 10;
+}
+
+.bg-image-pixels {
+  background-image: url("/assets/footer-pixels.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }

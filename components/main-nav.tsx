@@ -62,39 +62,47 @@ export function MainNav({ items }: MainNavProps) {
       </div>
       {showMobileMenu && (
         <motion.div
-          className="absolute h-screen w-screen top-[60px] left-0 bg-background flex flex-col items-center gap-12 py-6"
-          initial="closed"
-          animate="open"
-          exit="closed"
-          variants={sidebar}
-          transition={{ damping: 300 }}
+          className="fixed top-[60px] left-0 w-full h-full bg-black bg-opacity-50 flex justify-start"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
         >
-          <ConnectWallet
-            theme={theme as "light" | "dark"}
-            btnTitle="Login"
-            modalTitle="Login to Dakan"
-            className={`${!address ? `custom-btn-main` : ""}`}
-          />
-          {items?.length ? (
-            <nav className="lg:hidden flex flex-col items-center gap-6">
-              {items?.map(
-                (item, index) =>
-                  item.href && (
-                    <Link
-                      key={index}
-                      href={item.href}
-                      onClick={toggleMobileMenu}
-                      className={cn(
-                        "flex items-center text-[2rem] font-bold text-muted-foreground",
-                        item.disabled && "cursor-not-allowed opacity-80"
-                      )}
-                    >
-                      {item.title}
-                    </Link>
-                  )
-              )}
-            </nav>
-          ) : null}
+          <motion.div
+            className="absolute h-screen w-[85vw] top-0 left-0 bg-background flex flex-col gap-12 py-6 px-6"
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={sidebar}
+            transition={{ damping: 300 }}
+          >
+            {items?.length ? (
+              <nav className="lg:hidden flex flex-col gap-6">
+                <ConnectWallet
+                  theme={theme as "light" | "dark"}
+                  btnTitle="Login"
+                  modalTitle="Login to Dakan"
+                  className={`${!address ? `custom-btn-main` : ""}`}
+                />
+                {items?.map(
+                  (item, index) =>
+                    item.href && (
+                      <Link
+                        key={index}
+                        href={item.href}
+                        onClick={toggleMobileMenu}
+                        className={cn(
+                          "flex items-center text-[2rem] font-bold text-muted-foreground",
+                          item.disabled && "cursor-not-allowed opacity-80"
+                        )}
+                      >
+                        {item.title}
+                      </Link>
+                    )
+                )}
+              </nav>
+            ) : null}
+          </motion.div>
         </motion.div>
       )}
     </>

@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { siteConfig } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
@@ -16,6 +18,8 @@ export function SiteHeader() {
   const { theme } = useTheme();
   const address = useAddress();
   const { hasNFTs, loading: balanceCheckLoading } = useCheckBalance();
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
   // Filter through siteConfig.mainNav and remove the "Claim" link if the user has no NFTs
   const gatedMainNav = siteConfig.mainNav.filter((item) => {
@@ -25,8 +29,27 @@ export function SiteHeader() {
     return true;
   });
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      if (currentScrollPos < 130) return;
+      setIsVisible(prevScrollPos > currentScrollPos);
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos]);
+
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
+    <motion.header
+      initial={{ y: -120 }}
+      animate={{ y: isVisible ? 0 : -120 }}
+      transition={{ duration: 0.5 }}
+      className={`sticky top-0 z-40 w-full border-b bg-background ${
+        isVisible && "shadow-bottom"
+      }`}
+    >
       <div className="container px-4 lg:px-8 flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <MainNav items={gatedMainNav} />
         <div className="flex flex-1 items-center justify-end space-x-4">
@@ -62,6 +85,6 @@ export function SiteHeader() {
           </nav>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

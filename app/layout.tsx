@@ -6,6 +6,7 @@ import { fontSans } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { SiteHeader } from "@/components/site-header";
 import { Providers } from "@/components/providers/providers";
+import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -26,17 +27,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
+      <body className={cn("min-h-screen bg-background font-dino antialiased")}>
         <Providers>
-          <div className="relative flex min-h-screen flex-col">
-            <SiteHeader />
-            <div className="flex-1">{children}</div>
-            <TailwindIndicator />
+          <div className=" flex min-h-screen flex-col items-center ">
+            <div className="flex min-h-screen flex-col items-center w-full max-w-[1400px]">
+              <SiteHeader />
+              <div className="flex-1 w-full px-4 lg:px-0">{children}</div>
+              <TailwindIndicator />
+              <Footer />
+            </div>
           </div>
         </Providers>
       </body>

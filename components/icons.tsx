@@ -19,7 +19,6 @@ export const Icons = {
   sun: SunMedium,
   wallet: Wallet,
   moon: Moon,
-  twitter: Twitter,
   menu: Menu,
   close: X,
   google: (props: LucideProps) => (
@@ -76,6 +75,184 @@ export const Icons = {
           h-1.9v-8.4h3.4c1.7,0,2.8,1.3,2.8,2.7c0,1.2-0.7,1.9-1.6,2.2l1.8,3.6H194.5z M193.4,19.1H192v2.2h1.3c0.7,0,1.2-0.5,1.2-1.1
           C194.5,19.6,194.1,19.1,193.4,19.1z"
         />
+      </g>
+    </svg>
+  ),
+  inverseLogo: (props: LucideProps) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 201 52.4" {...props}>
+      <g>
+        <path
+          className="inverse-fill"
+          d="M32.6,46.7c-3.3,3.3-8.1,4.8-13.3,4.8H1V1h18.2c5.3,0,10,1.5,13.3,4.8c5.7,5.7,5.1,12.6,5.1,20.2
+          C37.7,33.7,38.3,41.1,32.6,46.7z M25.7,12.9c-1.7-2.1-4-3.1-7.4-3.1h-7.5v32.9h7.5c3.4,0,5.7-1.1,7.4-3.1c1.8-2.3,2.1-5.9,2.1-13.6
+          S27.6,15.2,25.7,12.9z"
+        />
+        <path
+          className="inverse-fill"
+          d="M63,51.6v-3.2c-2.5,2.5-4.8,3.6-9.1,3.6c-4.2,0-7.2-1.1-9.4-3.3c-2-2.1-3.1-5-3.1-8.3c0-5.9,4-10.7,12.6-10.7
+          h8.7v-1.8c0-4-2-5.8-6.9-5.8c-3.6,0-5.2,0.9-7.1,3.1l-5.9-5.8c3.6-4,7.2-5.1,13.3-5.1c10.4,0,15.8,4.4,15.8,13.1v24.4H63z
+           M62.8,35.9h-7.3c-3.3,0-5.2,1.6-5.2,4.2c0,2.6,1.7,4.3,5.3,4.3c2.6,0,4.2-0.2,5.8-1.8c1-0.9,1.3-2.4,1.3-4.7V35.9z"
+        />
+        <path
+          className="inverse-fill"
+          d="M100.9,51.6l-9.1-15.4l-3.9,4.4v11h-9.2V1h9.2v28.7l12.3-15.1h11.1L98.1,29.5l14.2,22.1H100.9z"
+        />
+        <path
+          className="inverse-fill"
+          d="M134.2,51.6v-3.2c-2.5,2.5-4.8,3.6-9.1,3.6c-4.2,0-7.2-1.1-9.4-3.3c-2-2.1-3.1-5-3.1-8.3
+          c0-5.9,4-10.7,12.6-10.7h8.7v-1.8c0-4-2-5.8-6.9-5.8c-3.6,0-5.2,0.9-7.1,3.1l-5.9-5.8c3.6-4,7.2-5.1,13.3-5.1
+          c10.4,0,15.8,4.4,15.8,13.1v24.4H134.2z M133.9,35.9h-7.3c-3.3,0-5.2,1.6-5.2,4.2c0,2.6,1.7,4.3,5.3,4.3c2.6,0,4.2-0.2,5.8-1.8
+          c1-0.9,1.3-2.4,1.3-4.7V35.9z"
+        />
+        <path
+          className="inverse-fill"
+          d="M171.3,51.6V29.2c0-5-3.2-6.7-6.1-6.7c-2.9,0-6.2,1.7-6.2,6.7v22.4h-9.2v-37h9V18c2.4-2.6,5.8-3.8,9.2-3.8
+          c3.7,0,6.7,1.2,8.7,3.3c3,3,3.8,6.5,3.8,10.5v23.6H171.3z"
+        />
+        <path
+          className="inverse-fill"
+          d="M193.1,29.7c-4.4,0-7.9-3.6-7.9-7.9s3.6-7.9,7.9-7.9c4.4,0,7.9,3.6,7.9,7.9S197.4,29.7,193.1,29.7z
+           M193.1,15.6c-3.4,0-6.1,2.6-6.1,6.2s2.6,6.2,6.1,6.2c3.4,0,6.1-2.6,6.1-6.2S196.5,15.6,193.1,15.6z M194.5,26l-1.5-3.3H192V26
+          h-1.9v-8.4h3.4c1.7,0,2.8,1.3,2.8,2.7c0,1.2-0.7,1.9-1.6,2.2l1.8,3.6H194.5z M193.4,19.1H192v2.2h1.3c0.7,0,1.2-0.5,1.2-1.1
+          C194.5,19.6,194.1,19.1,193.4,19.1z"
+        />
+      </g>
+    </svg>
+  ),
+  linktree: (props: LucideProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      shapeRendering="geometricPrecision"
+      textRendering="geometricPrecision"
+      imageRendering="optimizeQuality"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      viewBox="0 0 417 512.238"
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        fillRule="nonzero"
+        d="M171.274 344.942h74.09v167.296h-74.09V344.942zM0 173.468h126.068l-89.622-85.44 49.591-50.985 85.439 87.829V0h74.086v124.872L331 37.243l49.552 50.785-89.58 85.24H417v70.502H290.252l90.183 87.629L331 381.192 208.519 258.11 86.037 381.192l-49.591-49.591 90.218-87.631H0v-70.502z"
+      />
+    </svg>
+  ),
+  twitter: (props: LucideProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="-0.5 -0.5 14 14"
+      {...props}
+    >
+      <g id="twitter--media-twitter-social">
+        <path
+          id="Vector"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3.714 8.729a6.286 6.286 0 0 1 -2.238 1.124 0.464 0.464 0 0 0 0 0.873C7.902 13.362 11.988 9.286 11.366 4.764l1.04 -2.154h-1.207C9.694 0.761 5.701 0.854 6.361 4.791c0 0 -2.136 0.381 -4.866 -2.303A0.464 0.464 0 0 0 0.706 2.786 5.126 5.126 0 0 0 3.714 8.729Z"
+          strokeWidth="1"
+        ></path>
+      </g>
+    </svg>
+  ),
+  discord: (props: LucideProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="-0.5 -0.5 14 14"
+      {...props}
+    >
+      <g id="discord">
+        <path
+          id="Ellipse 1140"
+          stroke="currentColor"
+          d="M3.818 6.036a0.464 0.464 0 1 0 0.929 0 0.464 0.464 0 1 0 -0.929 0"
+          strokeWidth="1"
+        ></path>
+        <path
+          id="Ellipse 1141"
+          stroke="currentColor"
+          d="M7.997 6.036a0.464 0.464 0 1 0 0.929 0 0.464 0.464 0 1 0 -0.929 0"
+          strokeWidth="1"
+        ></path>
+        <path
+          id="Vector 597"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M0.797 9.159c0 -2.229 0.797 -5.176 1.593 -6.371 0 0 0.797 -0.398 3.983 -0.398 3.185 0 3.982 0.399 3.982 0.399 0.797 1.194 1.593 4.14 1.593 6.37 -0.266 0.399 -1.195 1.275 -2.788 1.593l-1.402 -1.751a6.116 6.116 0 0 1 -2.772 0L3.584 10.753c-1.593 -0.319 -2.522 -1.195 -2.788 -1.593Z"
+          strokeWidth="1"
+        ></path>
+        <path
+          id="Vector 598"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3.584 8.364c0.242 0.242 0.752 0.486 1.401 0.638a6.116 6.116 0 0 0 2.773 0c0.649 -0.152 1.158 -0.396 1.401 -0.638"
+          strokeWidth="1"
+        ></path>
+      </g>
+    </svg>
+  ),
+  youtube: (props: LucideProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="-0.5 -0.5 24 24"
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M1.123 7.372A53.658 53.658 0 0 0 0.958 11.5c0 1.564 0.077 3.035 0.174 4.255 0.14 1.741 1.467 3.072 3.18 3.191 1.719 0.12 4.126 0.22 7.188 0.22 3.062 0 5.468 -0.101 7.188 -0.22 1.713 -0.119 3.04 -1.45 3.18 -3.191 0.098 -1.22 0.174 -2.691 0.174 -4.255 0 -1.51 -0.071 -2.933 -0.165 -4.128a3.572 3.572 0 0 0 -3.316 -3.316C16.857 3.936 14.532 3.833 11.5 3.833c-3.032 0 -5.358 0.103 -7.061 0.223a3.572 3.572 0 0 0 -3.316 3.316ZM14.854 11.5 9.583 8.625v5.75l5.271 -2.875Z"
+        clipRule="evenodd"
+        strokeWidth="1"
+      ></path>
+    </svg>
+  ),
+  instagram: (props: LucideProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="-0.5 -0.5 14 14"
+      {...props}
+    >
+      <g id="instagram">
+        <g id="Group 4546">
+          <path
+            id="Vector"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9.595 3.384a0.232 0.232 0 1 1 0 -0.464"
+            strokeWidth="1"
+          ></path>
+          <path
+            id="Vector_2"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9.595 3.384a0.232 0.232 0 1 0 0 -0.464"
+            strokeWidth="1"
+          ></path>
+        </g>
+        <path
+          id="Rectangle 2"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M0.797 3.186A2.389 2.389 0 0 1 3.186 0.797h6.372a2.389 2.389 0 0 1 2.389 2.389v6.372a2.389 2.389 0 0 1 -2.389 2.389H3.185a2.389 2.389 0 0 1 -2.389 -2.389V3.185Z"
+          strokeWidth="1"
+        ></path>
+        <path
+          id="Ellipse 11"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M4.004 6.372a2.368 2.368 0 1 0 4.736 0 2.368 2.368 0 1 0 -4.736 0"
+          strokeWidth="1"
+        ></path>
       </g>
     </svg>
   ),

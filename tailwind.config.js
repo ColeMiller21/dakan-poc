@@ -18,6 +18,15 @@ module.exports = {
       minHeight: {
         "screen-minus-navbar": "calc(100vh - 64px)",
       },
+      lineHeight: {
+        35: "35px",
+      },
+      fontFamily: {
+        dino: ["DinoPro", "sans-serif"],
+      },
+      boxShadow: {
+        bottom: "0 4px 2px -2px rgba(0, 0, 0, 0.1)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -27,6 +36,10 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+        },
+        inversePrimary: {
+          DEFAULT: "hsl(var(--inverse-primary))",
+          foreground: "hsl(var(--inverse-primary-foreground))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -53,7 +66,7 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
         dakanGreen: {
-          DEFAULT: "hsl(var(--dakanGreen))",
+          DEFAULT: "hsl(var(--dakan))",
         },
       },
       borderRadius: {

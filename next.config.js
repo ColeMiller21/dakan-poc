@@ -1,5 +1,7 @@
+const withFonts = require("next-fonts");
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withFonts({
   webpack: (config) => {
     config.resolve.fallback = { fs: false, net: false, tls: false };
     config.externals.push("lokijs", "encoding");
@@ -14,6 +16,6 @@ const nextConfig = {
       },
     ],
   },
-};
+});
 
 module.exports = nextConfig;
